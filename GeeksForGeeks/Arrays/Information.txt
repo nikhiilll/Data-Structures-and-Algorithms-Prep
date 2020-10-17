@@ -1,0 +1,1 @@
+This folder contains the solutions for the Array Data Structure problems on GFG.
