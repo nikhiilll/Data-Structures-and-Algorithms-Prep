@@ -1,5 +1,7 @@
 def removeNthNodeFromEnd(head, n):
-
+    """
+    TC: O(n) | SC: O(1)
+    """
     ptr1, ptr2 = head, head
 
     for _ in range(n):
