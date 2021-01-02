@@ -14,7 +14,7 @@ def diameter(root):
         leftBranchLength = findMaxPath(node.left)
         rightBranchLength = findMaxPath(node.right)
         maxPathAsBranch = max(leftBranchLength, rightBranchLength) + 1
-        maxPathAsRoot = max(maxPathAsBranch, leftBranchLength + rightBranchLength + 1)
+        maxPathAsRoot = leftBranchLength + rightBranchLength
         maxPath = max(maxPath, maxPathAsRoot)
 
         return maxPathAsBranch
