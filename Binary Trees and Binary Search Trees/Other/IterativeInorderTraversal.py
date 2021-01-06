@@ -1,5 +1,8 @@
 def iterativeInOrderTraversal(tree, callback):
-    
+    """
+    TC: O(n)
+    SC: O(1)
+    """
     previousNode = None
     currentNode = tree
 
