@@ -1,6 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-    
+    """
+    TC: O(n)
+    SC: O(n)
+    """
         numdict = {}
         
         for i in range(len(nums)):

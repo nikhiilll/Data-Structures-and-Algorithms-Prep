@@ -3,18 +3,27 @@ class Solution:
         
         profit = 0
         
-        if not prices:
-            return profit
+        # if not prices:
+        #     return profit
         
-        minPrice = prices[0]
-        maxPrice = prices[0]
+        # minPrice = prices[0]
+        # maxPrice = prices[0]
         
-        for i in range(1, len(prices)):
-            if prices[i] < minPrice:
-                minPrice = prices[i]
-                maxPrice = prices[i]
-            if prices[i] > maxPrice:
-                maxPrice = prices[i]
-            profit = max(profit, maxPrice - minPrice)
+        # for i in range(1, len(prices)):
+        #     if prices[i] < minPrice:
+        #         minPrice = prices[i]
+        #         maxPrice = prices[i]
+        #     if prices[i] > maxPrice:
+        #         maxPrice = prices[i]
+        #     profit = max(profit, maxPrice - minPrice)
         
-        return profit
+        # return profit
+
+        minPrice, maxProfit = float("inf"), 0
+
+        for price in prices:
+            minPrice = min(minPrice, price)
+            profit = price - minPrice
+            maxProfit = max(maxProfit, profit)
+        
+        return maxProfit
