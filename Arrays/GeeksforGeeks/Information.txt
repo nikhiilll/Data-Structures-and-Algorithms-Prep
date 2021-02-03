@@ -1,1 +1,0 @@
-This folder contains the Array Data Structure code for the problems on GeeksForGeeks website.
