@@ -1,6 +1,6 @@
 def linkedListCycle(head):
     """
-    TC: O(n) | SC: O(1)
+    TC: O(n) | SC: O(n)
     """
     # visitedNodes = set()
     # ptr = head

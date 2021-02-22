@@ -1,27 +1,24 @@
-def mergeTwoSortedLinkedLists(headOne, headTwo):
+def mergeTwoLists(l1, l2):
+    """
+    TC: O(n + m)
+    SC: O(1)
+    """
+    if not l1:
+        return l2
+    if not l2:
+        return l1
 
-    if not headTwo:
-        return headOne
-    
-    if not headOne:
-        return headTwo
-        
-    ptr1, ptr2, prevPtr1 = headOne, headTwo, None
+    head = tail = ListNode(0)
+    ptr1, ptr2 = l1, l2
 
     while ptr1 and ptr2:
-        if ptr1.value < ptr2.value:
-            prevPtr1 = ptr1
-            ptr1 = ptr1.next
+        if ptr1.val < ptr2.val:
+            tail.next, ptr1 = ptr1, ptr1.next
         else:
-            if prevPtr1 is not None:
-                prevPtr1.next = ptr2
-            prevPtr1 = ptr2
-            ptr2 = ptr2.next
-            prevPtr1.next = ptr1
+            tail.next, ptr2 = ptr2, ptr2.next
+        tail = tail.next
     
-    if ptr1 is None:
-        prevPtr1.next = ptr2
-
-    return headOne if headOne.value < headTwo.value else headTwo
+    tail.next = ptr1 or ptr2
+    return head.next
 
 
