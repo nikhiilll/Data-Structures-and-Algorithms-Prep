@@ -1,25 +1,29 @@
+class BinaryTree:
+
+    def __init__(self, value):
+        self.left = None
+        self.right = None
+        self.value = value
+
+
 def branchSums(root):
     """
     TC: O(n)
-    SC: O(n)
+    SC: O(h)
     """
-    if not root:
-        return []
-    
     result = []
-    return branchSumsHelper(root, result, 0)
 
+    def branchSumsHelper(node, currentSum, result):
 
-def branchSumsHelper(node, result, parentSum):
+        if not node:
+            return 0
 
-    if not node:
-        return result
-    
-    parentSum += node.value
-    if node.left is None and node.right is None:
-        result.append(parentSum)
+        if not node.left and not node.right:
+            result.append(currentSum + node.value)
 
-    branchSumsHelper(node.left, result, parentSum)
-    branchSumsHelper(node.right, result, parentSum)
-    
+        currentSum += node.value
+        branchSumsHelper(node.left, currentSum, result)
+        branchSumsHelper(node.right, currentSum, result)
+
+    branchSumsHelper(root, 0, result)
     return result
