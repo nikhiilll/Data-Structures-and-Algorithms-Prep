@@ -18,4 +18,4 @@ def inOrderTraversal(node, traversal):
 
     inOrderTraversal(node.left, traversal)
     traversal.append(node)
-    inOrderTraversal(node.right, traversal)    
+    inOrderTraversal(node.right, traversal)
