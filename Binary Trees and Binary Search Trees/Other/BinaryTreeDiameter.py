@@ -4,25 +4,24 @@ class BinaryTree:
         self.value = value
         self.left = None
         self.right = None
+"""
+TC: O(n)
+SC: O(h)
+"""
+def binaryTreeDiameter(tree):
 
+    _, maxDiameter = binaryTreeDiameterHelper(tree)
+    return maxDiameter
 
-def diameterHelper(node):
-
+def binaryTreeDiameterHelper(node):
+    
     if not node:
         return (0, 0)
     
-    leftBranchPath, leftBranchDiameter = diameterHelper(node.left)
-    rightBranchPath, rightBranchDiameter = diameterHelper(node.right)
+    leftBranch, leftDiameter = binaryTreeDiameterHelper(node.left)
+    rightBranch, rightDiameter = binaryTreeDiameterHelper(node.right)
 
-    maxBranchPath = max(leftBranchPath, rightBranchPath)
-    pathAsRoot = leftBranchPath + rightBranchPath + 1
-    maxDiameter = max(leftBranchDiameter, rightBranchDiameter, pathAsRoot, maxBranchPath)
+    maxDiameter = max(leftDiameter, rightDiameter, leftBranch + rightBranch)
+    maxBranch = max(leftBranch, rightBranch) + 1
 
-    return (maxBranchPath, maxDiameter)
-
-def binaryTreeDiameter(tree):
-
-    if not tree:
-        return -1
-    
-    return diameterHelper(tree)[1]
+    return (maxBranch, maxDiameter)
