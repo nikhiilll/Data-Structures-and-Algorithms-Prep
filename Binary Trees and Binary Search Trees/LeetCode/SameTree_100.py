@@ -1,26 +1,31 @@
+"""
+TC: O(n)
+SC: O(h)
+"""
 def isSameTree(p, q):
-    """
-    TC: O(n)
-    SC: Average Case - O(logn) | Worst Case - O(n)
-    """
-    if p and q:
-        return p.val == q.val and isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
-    else:
-        return p == q
+        # if not p and not q:
+        #     return True
+        
+        # if (not p and q) or (p and not q) or (p.val != q.val): 
+        #     return False
+        
+        # return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+    stackP = [p]
+    stackQ = [q]
 
-    #DFS Solution
-    stack = [(p, q)]
-
-    while stack:
-        node1, node2 = stack.pop()
-        if not node1 and not node2:
+    while stackP and stackQ:
+        nodeP = stackP.pop()
+        nodeQ = stackQ.pop()
+        if not nodeP and not nodeQ:
             continue
-        elif node1 is None or node2 is None:
+
+        if (not nodeP and nodeQ) or (nodeP and not nodeQ) or (nodeP.val != nodeQ.val):
             return False
-        else:
-            if node1.val != node2.val:
-                return False
-            stack.append((node1.right, node2.right))
-            stack.append((node1.left, node2.left))
+        stackP.append(nodeP.right)
+        stackP.append(nodeP.left)
+        stackQ.append(nodeQ.right)
+        stackQ.append(nodeQ.left)
     
-    return True
+    return len(stackP) == len(stackQ)
+
+    

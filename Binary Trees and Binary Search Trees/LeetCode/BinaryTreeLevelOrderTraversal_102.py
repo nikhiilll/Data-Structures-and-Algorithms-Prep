@@ -1,24 +1,23 @@
+from collections import deque
+"""
+TC: O(n)
+SC: O(h)
+"""
 def levelOrder(root):
-    """
-    TC: O(n)
-    SC: O(n)
-    """
+
     if not root:
         return []
 
     result = []
-    queue = [root]
+    queue = deque([root])
 
     while queue:
-        tempNodes = []
-        tempValues = []
-        for element in queue:
-            tempValues.append(element.val)
-            if element.left:
-                tempNodes.append(element.left)
-            if element.right:
-                tempNodes.append(element.right)
-        result.append(tempValues)
-        queue = tempNodes
-
+        currentLevel = []
+        for i in range(len(queue)):
+            node = queue.popleft()
+            currentLevel.append(node.val)
+            if node.left: queue.append(node.left)
+            if node.right: queue.append(node.right)
+        result.append(currentLevel)
+    
     return result
